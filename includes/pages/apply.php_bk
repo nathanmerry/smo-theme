@@ -1,0 +1,38 @@
+<?php
+	$urlIframe = 'http://www.cmlo.uk/iframe.php';
+	$owner = isset($_GET['owner'])? '?owner=' .$_GET['owner']:'?owner=VIVA';
+	$urlIframe .= $owner;
+
+	if(isset($GLOBALS['max_lt']) && $GLOBALS['max_lt']){
+		$urlIframe .= '&max_lt=' .$GLOBALS['max_lt'];
+	}
+
+	if(isset($GLOBALS['max_lt']) && $GLOBALS['max_lt']){
+		$urlIframe .= '&max_lt=' .$GLOBALS['max_lt'];
+	}
+
+	if(isset($GLOBALS['min_lt']) && $GLOBALS['min_lt']){
+		$urlIframe .= '&min_lt=' .$GLOBALS['min_lt'];
+	}
+
+	if(isset($GLOBALS['min_la']) && $GLOBALS['min_la']){
+		$urlIframe .= '&min_la=' .$GLOBALS['min_la'];
+	}
+
+	if(isset($GLOBALS['max_la']) && $GLOBALS['max_la']){
+		$urlIframe .= '&max_la=' .$GLOBALS['max_la'];
+	}
+
+	if(isset($GLOBALS['increments']) && $GLOBALS['increments']){
+		$urlIframe .= '&increments=' .$GLOBALS['increments'];
+	}
+?>
+<div id="main">
+	<div class="row">
+		<!--<div class="small-12 medium-4 medium-push-8 columns">
+		</div>	-->
+		<div class="small-12 medium-12 columns">
+			<iframe src="<?php echo $urlIframe; ?>" scrolling="no" width="100%" style="border:0px;" height="5000"></iframe>
+		</div>
+	</div>
+</div>

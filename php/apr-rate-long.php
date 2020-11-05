@@ -1,0 +1,1 @@
+﻿Representative Example: Amount of credit: £500 for 12 months at £58.74 per month. Total amount repayable of £704.00. Interest: £204.00. Interest rate: 53.58% pa (fixed). 68.7% APR Representative. We’re a fully regulated and authorised credit broker and not a lender. Rates between 9.3% APR and 1294% APR. Loan term lengths from 3 to 36 months.

@@ -1,0 +1,69 @@
+<?php 
+
+class Portal{
+
+	private static $API_SECRET = 'CH5RQ7kOvPMwkNnPwEkQoQtNe7wjyisoJxNy0lt2oy7cFEcXJPWbghbr6mcrDxg8qmgAGODUGQCxTpvAZcDLPVzMimfJU6q1wyjA';
+
+	function requestApi($url, $data = array()){
+
+
+   	 		$curl = curl_init();
+
+			curl_setopt($curl, CURLOPT_POST, 1);
+			curl_setopt($curl, CURLOPT_URL, $url);
+			curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+			curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query(array(
+				'secret' => self::$API_SECRET,
+				'data' => $data)));
+			curl_setopt($curl, CURLOPT_HEADER, 1);
+
+			// Send the request
+			$result = curl_exec($curl);
+
+			$header_size = curl_getinfo($curl, CURLINFO_HEADER_SIZE);
+			$body = substr($result, $header_size);
+
+
+			curl_close($curl);
+			
+			return $body;
+	}
+
+    function isBot($userAgent) {
+        if(stristr($userAgent, "Googlebot")		|| 	/* Google */
+            stristr($userAgent, "Slurp")			|| 	/* Inktomi/Y! */
+            stristr($userAgent, "MSNBOT")    	|| 	/* MSN */
+            stristr($userAgent, "bingbot")    	|| 	/* Bingbot */
+            stristr($userAgent, "Google Web Preview")    	|| 	/* Google Web Preview */
+            stristr($userAgent, "YahooSeeker")    	|| 	/* YahooSeeker */
+            stristr($userAgent, "Yahoo! Slurp")    	|| 	/* Yahoo! Slurp */
+            stristr($userAgent, "Exabot")    	|| 	/* Exabot */
+            stristr($userAgent, "SiteBot")    	|| 	/* SiteBot */
+            stristr($userAgent, "Java/1.4.1_04")    	|| 	/* ava/1.4.1_04 */
+            stristr($userAgent, "YandexBot")    	|| 	/* YandexBot */
+            stristr($userAgent, "Wget")    	|| 	/* Wget */
+            stristr($userAgent, "Ultraseek")    	|| 	/* Ultraseek */
+            stristr($userAgent, "InfoSeek")    	|| 	/* InfoSeek */
+            stristr($userAgent, "Scooter")    	|| 	/* Scooter */
+            stristr($userAgent, "Mercator")    	|| 	/* Mercator */
+            stristr($userAgent, "AVSearch")    	|| 	/* AVSearch */
+            stristr($userAgent, "AltaVista")    	|| 	/* AltaVista */
+            stristr($userAgent, "Ezooms")    	|| 	/* Ezooms */
+            stristr($userAgent, "BaiDuSpider")    	|| 	/* BaiDuSpider */
+            stristr($userAgent, "teoma")    		|| 	/* Teoma */
+            stristr($userAgent, "ia_archiver")   || 	/* Alexa */
+            stristr($userAgent, "Scooter")    	|| 	/* Altavista */
+            stristr($userAgent, "Mercator")    	|| 	/* Altavista */
+            stristr($userAgent, "FAST")    		|| 	/* AllTheWeb */
+            stristr($userAgent, "MantraAgent")   || 	/* LookSmart */
+            stristr($userAgent, "Lycos")    		|| 	/* Lycos */
+            stristr($userAgent, "UptimeRobot")    		|| 	/* UptimeRobot */
+            stristr($userAgent, "AOL 6.0")    		|| 	/* AOL */
+            stristr($userAgent, "ZyBorg")) {    		/* WISEnut */
+
+
+            return true;
+        }
+        return false;
+    }
+}
