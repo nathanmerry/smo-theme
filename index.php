@@ -49,9 +49,9 @@
 		}
 		return isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : false;
 	}	
-	
+
 	$page = "home";
-	if(isset($_GET['page'])){ $page = $_GET['page']; }
+		if(isset($_GET['page'])){ $page = $_GET['page']; }
 	
 	// Create a title and set body class.
 	switch($page)
@@ -201,9 +201,9 @@ $dbPassword = "gambling911";
 $dbName = "vmo1co_co";
 */
 $dbServerName = "127.0.0.1";
-$dbUsername = "terms13_dan";
-$dbPassword = "TuC2oDQ@9LV9";
-$dbName = "terms13_cmlo";
+$dbUsername = "root";
+$dbPassword = "";
+$dbName = "smoCMS";
 
 // create connection
 $conn = new mysqli($dbServerName, $dbUsername, $dbPassword, $dbName);
@@ -213,8 +213,11 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT * FROM Websites WHERE id=50";
+require_once('./website-id.php');
+
+$sql = "SELECT * FROM Websites WHERE id=" . $websiteId;
 $result = $conn->query($sql);
+
 
 if ($result->num_rows > 0) {
     // output data of each row
@@ -258,7 +261,10 @@ $GLOBALS['Website_Short_Address'] = $row["Website_Short_Address"];
 
 	<div id="wrapper">
 			<?php require_once 'includes/topbar.php'; ?>
-			<?php require_once 'includes/pages/' . $page . '.php'; ?>
+	
+			<?php 
+			require_once 'includes/pages/' . $page . '.php'; 
+			?>
 		</div>	
  
 		<div style="display: none">

@@ -5,6 +5,7 @@
     
 ?>
 <?php
+require_once('../website-id.php');
 
 /*$dbServerName = "vmo1.co.uk";
 $dbUsername = "vmo1co_sam";
@@ -12,9 +13,9 @@ $dbPassword = "gambling911";
 $dbName = "vmo1co_co";
 */
 $dbServerName = "127.0.0.1";
-$dbUsername = "terms13_dan";
-$dbPassword = "TuC2oDQ@9LV9";
-$dbName = "terms13_cmlo";
+$dbUsername = "root";
+$dbPassword = "";
+$dbName = "smoCMS";
 
 // create connection
 $conn = new mysqli($dbServerName, $dbUsername, $dbPassword, $dbName);
@@ -24,7 +25,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT * FROM Websites WHERE id=50";
+$sql = "SELECT * FROM Websites WHERE id=" . $websiteId;
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
