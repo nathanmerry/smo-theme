@@ -5,17 +5,21 @@
     
 ?>
 <?php
-require_once('../website-id.php');
 
 /*$dbServerName = "vmo1.co.uk";
 $dbUsername = "vmo1co_sam";
 $dbPassword = "gambling911";
 $dbName = "vmo1co_co";
 */
-$dbServerName = "127.0.0.1";
-$dbUsername = "root";
-$dbPassword = "";
-$dbName = "smoCMS";
+
+require '../globals.php';
+$cmsSmo = new cmsSMO();
+
+$dbServerName = $cmsSmo->databaseSeverName;
+$dbUsername = $cmsSmo->databaseUsername;
+$dbPassword = $cmsSmo->databasePassword;
+$dbName = $cmsSmo->databaseName;
+
 
 // create connection
 $conn = new mysqli($dbServerName, $dbUsername, $dbPassword, $dbName);
@@ -24,36 +28,39 @@ $conn = new mysqli($dbServerName, $dbUsername, $dbPassword, $dbName);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-
-$sql = "SELECT * FROM Websites WHERE id=" . $websiteId;
+$sql = "SELECT * FROM website WHERE id=" . $cmsSmo->websiteID;
 $result = $conn->query($sql);
 
+
 if ($result->num_rows > 0) {
-    // output data of each row
-    while($row = $result->fetch_assoc()) { 
-      /*  echo "Min_la: " . $row["min_la"]. " - Max_la: " . $row["max_la"]. 
-        "Max_lt " . $row["max_lt"]. "Min_lt " . $row["min_lt"]."apr " . $row["apr"]."legal " . $row["legal"] ."repexample " . $row["rep_example"]  ;*/
-       
+	// output data of each row
+	while($row = $result->fetch_assoc()) { 
+		/*  echo "Min_la: " . $row["min_la"]. " - Max_la: " . $row["max_la"]. 
+		"Max_lt " . $row["max_lt"]. "Min_lt " . $row["min_lt"]."apr " . $row["apr"]."legal " . $row["legal"] ."repexample " . $row["rep_example"]  ;*/
+			 
      $GLOBALS['h1c'] = $row["h1c"]; 
      $GLOBALS['h2c'] = $row["h2c"]; 
      $GLOBALS['h3c'] = $row["h3c"]; 
-     $GLOBALS['Button_Colour'] = $row["Button_Colour"]; 
-     $GLOBALS['Button_Colour_Border'] = $row["Button_Colour_Border"]; 
-     $GLOBALS['Button_Colour_Hover'] = $row["Button_Colour_Hover"]; 
-     $GLOBALS['Header_Colour'] = $row["Header_Colour"]; 
-     $GLOBALS['Warning_Block'] = $row["Warning_Block"]; 
-     $GLOBALS['Homepage_Block_Colour'] = $row["Homepage_Block_Colour"]; 
-     $GLOBALS['Footer_Background_Colour'] = $row["Footer_Background_Colour"]; 
-     $GLOBALS['Footer_Font_Colour'] = $row["Footer_Font_Colour"]; 
-     $GLOBALS['Header_Font_Colour'] = $row["Header_Font_Colour"]; 
-     $GLOBALS['Header_Font_Colour_Hover'] = $row["Header_Font_Colour_Hover"]; 
-     $GLOBALS['Homepage_Heading_Colour'] = $row["Homepage_Heading_Colour"]; 
-     $GLOBALS['Homepage_Reasons_Colour'] = $row["Homepage_Reasons_Colour"]; 
-     $GLOBALS['Homepage_Block_Border'] = $row["Homepage_Block_Border"]; 
-     $GLOBALS['Homepage_Span_Colour'] = $row["Homepage_Span_Colour"]; 
-     $GLOBALS['Slider_Colour'] = $row["Slider_Colour"]; 
-     $GLOBALS['Brand_Colour'] = $row["Brand_Colour"]; 
-     $GLOBALS['Loan_Information_Colour'] = $row["Loan_Information_Colour"]; 
+     $GLOBALS['Button_Colour'] = $row["button_colour"]; 
+     $GLOBALS['Button_Colour_Border'] = $row["button_colour_border"]; 
+     $GLOBALS['Button_Colour_Hover'] = $row["button_colour_hover"]; 
+     $GLOBALS['Header_Colour'] = $row["header_colour"]; 
+     $GLOBALS['Warning_Block'] = $row["warning_block"]; 
+     $GLOBALS['Homepage_Block_Colour'] = $row["homepage_block_colour"]; 
+     $GLOBALS['Footer_Background_Colour'] = $row["footer_background_colour"]; 
+     $GLOBALS['Footer_Font_Colour'] = $row["footer_font_colour"]; 
+     $GLOBALS['Header_Font_Colour'] = $row["header_font_colour"]; 
+     $GLOBALS['Header_Font_Colour_Hover'] = $row["header_font_colour_hover"]; 
+     $GLOBALS['Homepage_Heading_Colour'] = $row["homepage_heading_colour"]; 
+     $GLOBALS['Homepage_Reasons_Colour'] = $row["homepage_reasons_colour"]; 
+     $GLOBALS['Homepage_Block_Border'] = $row["homepage_block_border"]; 
+     $GLOBALS['Homepage_Span_Colour'] = $row["homepage_span_colour"]; 
+     $GLOBALS['Slider_Colour'] = $row["slider_colour"]; 
+     $GLOBALS['Brand_Colour'] = $row["brand_colour"]; 
+		 $GLOBALS['Loan_Information_Colour'] = $row["loan_information_colour"]; 
+		 
+
+		 
         ?>
    <?php }
 } else {
