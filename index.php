@@ -1,5 +1,4 @@
 <?php
-
 	if(isset($_SERVER['QUERY_STRING'])){ 
 		if(!isset($_SESSION)){ session_start(); }
 		
@@ -12,7 +11,6 @@
 			$_SESSION['auto_key'] = $key;
 			die(header('Location: /get-loan'));
 		}
-		
 	}
 
 	require_once('api.php');
@@ -194,55 +192,57 @@
 ?>
 
 <?php
+require './globals.php';
+$cmsSmo = new cmsSMO();
 
 /*$dbServerName = "vmo1.co.uk";
 $dbUsername = "vmo1co_sam";
 $dbPassword = "gambling911";
 $dbName = "vmo1co_co";
 */
-$dbServerName = "127.0.0.1";
-$dbUsername = "root";
-$dbPassword = "";
-$dbName = "smoCMS";
+
+// create connection
+$dbServerName = $cmsSmo->databaseSeverName;
+$dbUsername = $cmsSmo->databaseUsername;
+$dbPassword = $cmsSmo->databasePassword;
+$dbName = $cmsSmo->databaseName;
+
 
 // create connection
 $conn = new mysqli($dbServerName, $dbUsername, $dbPassword, $dbName);
 
-// check connection
+// check connectionf
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-require_once('./website-id.php');
-
-$sql = "SELECT * FROM Websites WHERE id=" . $websiteId;
+$sql = "SELECT * FROM website WHERE id=" . $cmsSmo->websiteID;
 $result = $conn->query($sql);
-
 
 if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) { 
-     $GLOBALS['h1c'] = $row["h1c"]; 
-     $GLOBALS['Button_Colour'] = $row["Button_Colour"]; 
-     $GLOBALS['Button_Colour_Border'] = $row["Button_Colour_Border"]; 
-     $GLOBALS['Header_Colour'] = $row["Header_Colour"]; 
-     $GLOBALS['Warning_Block'] = $row["Warning_Block"]; 
-     $GLOBALS['Website_Address'] = $row["Website_Address"]; 
-     $GLOBALS['Homepage_Block_Colour'] = $row["Homepage_Block_Colour"]; 
-     $GLOBALS['Footer_Background_Colour'] = $row["Footer_Background_Colour"]; 
-     $GLOBALS['Footer_Font_Colour'] = $row["Footer_Font_Colour"]; 
-     $GLOBALS['Header_Font_Colour'] = $row["Header_Font_Colour"]; 
-     $GLOBALS['Header_Font_Colour_Hover'] = $row["Header_Font_Colour_Hover"]; 
-     $GLOBALS['Homepage_Heading_Colour'] = $row["Homepage_Heading_Colour"]; 
-     $GLOBALS['Homepage_Reasons_Colour'] = $row["Homepage_Reasons_Colour"]; 
-     $GLOBALS['Homepage_Block_Border'] = $row["Homepage_Block_Border"]; 
-     $GLOBALS['Home_CTA_One'] = $row["Home_CTA_One"]; 
-     $GLOBALS['Home_CTA_Two'] = $row["Home_CTA_Two"]; 
-     $GLOBALS['Home_CTA_Three'] = $row["Home_CTA_Three"]; 
-     $GLOBALS['Home_Image_One'] = $row["Home_Image_One"]; 
-     $GLOBALS['Home_Image_Two'] = $row["Home_Image_Two"]; 
-     $GLOBALS['Home_Image_Three'] = $row["Home_Image_Three"];
-$GLOBALS['Website_Short_Address'] = $row["Website_Short_Address"]; 
+			$GLOBALS['h1c'] = $row["h1c"]; 
+			$GLOBALS['Button_Colour'] = $row["button_colour"]; 
+     $GLOBALS['Button_Colour_Border'] = $row["button_colour_border"]; 
+     $GLOBALS['Header_Colour'] = $row["header_colour"]; 
+     $GLOBALS['Warning_Block'] = $row["warning_block"]; 
+     $GLOBALS['Website_Address'] = $row["website_address"]; 
+     $GLOBALS['Homepage_Block_Colour'] = $row["homepage_block_colour"]; 
+     $GLOBALS['Footer_Background_Colour'] = $row["footer_background_colour"]; 
+     $GLOBALS['Footer_Font_Colour'] = $row["footer_font_colour"]; 
+     $GLOBALS['Header_Font_Colour'] = $row["header_font_colour"]; 
+     $GLOBALS['Header_Font_Colour_Hover'] = $row["header_font_colour_hover"]; 
+     $GLOBALS['Homepage_Heading_Colour'] = $row["homepage_heading_colour"]; 
+     $GLOBALS['Homepage_Reasons_Colour'] = $row["homepage_reasons_colour"]; 
+     $GLOBALS['Homepage_Block_Border'] = $row["homepage_block_border"]; 
+     $GLOBALS['Home_CTA_One'] = $row["home_cta_one"]; 
+     $GLOBALS['Home_CTA_Two'] = $row["home_cta_two"]; 
+     $GLOBALS['Home_CTA_Three'] = $row["home_cta_three"]; 
+     $GLOBALS['Home_Image_One'] = $row["home_image_one"]; 
+     $GLOBALS['Home_Image_Two'] = $row["home_image_two"]; 
+		 $GLOBALS['Home_Image_Three'] = $row["home_image_three"];
+		 $GLOBALS['Website_Short_Address'] = $row["website_short_address"]; 
         ?>
    <?php }
 } else {
