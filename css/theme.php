@@ -13,24 +13,14 @@ $dbName = "vmo1co_co";
 */
 
 require '../globals.php';
+
+
+
 $cmsSmo = new cmsSMO();
+$conn = $cmsSmo->sqlQuery();
 
-$dbServerName = $cmsSmo->databaseSeverName;
-$dbUsername = $cmsSmo->databaseUsername;
-$dbPassword = $cmsSmo->databasePassword;
-$dbName = $cmsSmo->databaseName;
-
-
-// create connection
-$conn = new mysqli($dbServerName, $dbUsername, $dbPassword, $dbName);
-
-// check connectionf
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
 $sql = "SELECT * FROM website WHERE id=" . $cmsSmo->websiteID;
 $result = $conn->query($sql);
-
 
 if ($result->num_rows > 0) {
 	// output data of each row
