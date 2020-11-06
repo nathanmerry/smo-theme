@@ -1,4 +1,6 @@
 <?php
+	require './globals.php';
+
 	if(isset($_SERVER['QUERY_STRING'])){ 
 		if(!isset($_SESSION)){ session_start(); }
 		
@@ -153,7 +155,10 @@
 	{
 		if(!$loggedin){ header('Location: /'); }
 	}
+	require './Controller/Page.php';
 
+	$cmsPage = new Page();
+	$cmsPage->get('how-it-works');
 	$info_url = 'api/api/get-info';
 
 	$body = $api->requestApi($info_url, array('id'=>1));
@@ -192,32 +197,11 @@
 ?>
 
 <?php
-require './globals.php';
 $cmsSmo = new cmsSMO();
-
-/*$dbServerName = "vmo1.co.uk";
-$dbUsername = "vmo1co_sam";
-$dbPassword = "gambling911";
-$dbName = "vmo1co_co";
-*/
-
-// create connection
-$dbServerName = $cmsSmo->databaseSeverName;
-$dbUsername = $cmsSmo->databaseUsername;
-$dbPassword = $cmsSmo->databasePassword;
-$dbName = $cmsSmo->databaseName;
-
-
-// create connection
-$conn = new mysqli($dbServerName, $dbUsername, $dbPassword, $dbName);
-
-// check connectionf
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+$cmsSmoConn = $cmsSmo->sqlQuery();
 
 $sql = "SELECT * FROM website WHERE id=" . $cmsSmo->websiteID;
-$result = $conn->query($sql);
+$result = $cmsSmoConn->query($sql);
 
 if ($result->num_rows > 0) {
     // output data of each row
