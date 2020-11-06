@@ -25,4 +25,20 @@ class cmsSMO
 		$key = array_search($_SERVER['HTTP_HOST'], array_column($websites, 'name'));
 		return $websites[$key]['id'];
 	}
+
+	public function sqlQuery()
+	{
+		$dbServerName = $this->databaseSeverName;
+		$dbUsername = $this->databaseUsername;
+		$dbPassword = $this->databasePassword;
+		$dbName = $this->databaseName;
+
+		$conn = new mysqli($dbServerName, $dbUsername, $dbPassword, $dbName);
+
+		if ($conn->connect_error) {
+			die("Connection failed: " . $conn->connect_error);
+		} else {
+			return $conn;
+		}
+	}
 }
