@@ -161,7 +161,6 @@
 	$cmsError = 'Something went wrong';
 	$GLOBALS['how_it_works'] = $cmsPage->get('how-it-works') ?? $cmsError;
 	$GLOBALS['faq'] = $cmsPage->get('faq') ?? $cmsError;
-	$GLOBALS['faq'] = $cmsPage->get('faq') ?? $cmsError;
 	$GLOBALS['scams'] = $cmsPage->get('scams') ?? $cmsError;
 	
 
