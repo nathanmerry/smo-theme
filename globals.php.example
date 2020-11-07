@@ -1,0 +1,55 @@
+<?php
+
+class cmsSMO
+{
+	public $websiteID;
+	public $databaseSeverName;
+	public $databaseName;
+	public $databaseUsername;
+	public $databasePassword;
+	public $dbServerName = "127.0.0.1";
+
+
+	function __construct()
+	{
+		$this->websiteID = $this->getWebsiteID();
+		$this->databaseSeverName = '127.0.0.1';
+		$this->databaseName = 'baby1smo_main';
+		$this->databaseUsername = 'baby1smo_admin';
+		$this->databasePassword = '?K@2wyX44Ky)';
+	}
+
+	function getWebsiteID()
+	{
+		$websites = json_decode(file_get_contents(__DIR__ . '/websites.json'), true);
+		$key = array_search($_SERVER['HTTP_HOST'], array_column($websites, 'name'));
+		return $websites[$key]['id'];
+	}
+
+	public function sqlQuery()
+	{
+		$dbServerName = $this->databaseSeverName;
+		$dbUsername = $this->databaseUsername;
+		$dbPassword = $this->databasePassword;
+		$dbName = $this->databaseName;
+
+		$conn = new mysqli($dbServerName, $dbUsername, $dbPassword, $dbName);
+
+		if ($conn->connect_error) {
+			die("Connection failed: " . $conn->connect_error);
+		} else {
+			return $conn;
+		}
+	}
+
+	public function getLogo()
+	{
+		$conn = $this->sqlQuery();
+		$sql = "SELECT * FROM website WHERE id=" . $this->websiteID;
+		$result = $conn->query($sql);
+
+		if ($result->num_rows > 0) {
+			return $result->fetch_assoc()['logo_url'];
+		}
+	}
+}
