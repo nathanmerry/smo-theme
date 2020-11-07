@@ -8,7 +8,7 @@
 	<nav class="top-bar" data-topbar role="navigation">
 		<ul class="title-area">
 			<li class="name">
-				<a href="/"><img src="<?php echo (new cmsSMO)->getLogo() ?>" alt="Lily Loans" width="170" style="margin-top:9px;" /></a>
+				<a href="/"><img src="<?php $logo = new cmsSMO(); echo $logo->getLogo() ?>" alt="Lily Loans" width="170" style="margin-top:9px;" /></a>
 			</li>
 			<!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
 			<li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
