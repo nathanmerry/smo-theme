@@ -13,7 +13,7 @@
 			$_SESSION['auto_key'] = $key;
 			die(header('Location: /get-loan'));
 		}
-	}
+	}	
 
 	require_once('api.php');
 
@@ -158,14 +158,21 @@
 	require './Controller/Page.php';
 
 	$cmsPage = new Page();
-	$cmsPage->get('how-it-works');
+	$cmsError = 'Something went wrong';
+	$GLOBALS['how_it_works'] = $cmsPage->get('how-it-works') ?? $cmsError;
+	$GLOBALS['faq'] = $cmsPage->get('faq') ?? $cmsError;
+	$GLOBALS['faq'] = $cmsPage->get('faq') ?? $cmsError;
+	$GLOBALS['scams'] = $cmsPage->get('scams') ?? $cmsError;
+	
+
 	$info_url = 'api/api/get-info';
-
+	
 	$body = $api->requestApi($info_url, array('id'=>1));
-
+	
 	$json = json_decode($body);
-
+	
 	if($json->success) {
+		// $GLOBALS['faq'] = $json->faq;
 
 		$GLOBALS['rapr'] = $json->apr;
 		$GLOBALS['max_lt'] = $json->max_lt;
@@ -175,8 +182,6 @@
 		$GLOBALS['interestrates'] = $json->interestrates;
 		$GLOBALS['increments'] = $json->increments;
 		$GLOBALS['legal'] = $json->legal;
-		$GLOBALS['how_it_works'] = $json->how_it_works;
-		$GLOBALS['faq'] = $json->faq;
 		$GLOBALS['terms'] = $json->terms;
 		$GLOBALS['privacy'] = $json->privacy;
 		$GLOBALS['rep_example'] = $json->rep_example;
