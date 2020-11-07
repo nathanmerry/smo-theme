@@ -41,4 +41,15 @@ class cmsSMO
 			return $conn;
 		}
 	}
+
+	public function getLogo()
+	{
+		$conn = $this->sqlQuery();
+		$sql = "SELECT * FROM website WHERE id=" . $this->websiteID;
+		$result = $conn->query($sql);
+
+		if ($result->num_rows > 0) {
+			return $result->fetch_assoc()['logo_url'];
+		}
+	}
 }

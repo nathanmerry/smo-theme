@@ -1,12 +1,14 @@
-    <div id="warning-line" class="legal-banner">    <p id="text">   <center> <strong>Warning:</strong> Late repayment can cause you serious money problems. For help and advice go to <a href="http://www.moneyadviceservice.org.uk" target="_blank" rel="nofollow" style="color:#fff;">moneyadviceservice.org.uk</a></center></p>
+    <!-- <div id="warning-line" class="legal-banner">    <p id="text">   <center> <strong>Warning:</strong> Late repayment can cause you serious money problems. For help and advice go to <a href="http://www.moneyadviceservice.org.uk" target="_blank" rel="nofollow" style="color:#fff;">moneyadviceservice.org.uk</a></center></p>
    <p style="color:#fff;">We are aware of a scam circulating. BabyLoans.co.uk do not charge any fees to customers. Please be aware of suspicious phone calls from anyone claiming to be from BabyLoans.co.uk.</p>
-    </div>
+    </div> -->
+
+<?php ?>
 
 <div class="contain-to-grid <?php if($body_class != "home"){echo"not_home";}?>">
 	<nav class="top-bar" data-topbar role="navigation">
 		<ul class="title-area">
 			<li class="name">
-				<a href="/"><img src="/img/logo.png" alt="Lily Loans" width="170" style="margin-top:9px;" /></a>
+				<a href="/"><img src="<?php echo (new cmsSMO)->getLogo() ?>" alt="Lily Loans" width="170" style="margin-top:9px;" /></a>
 			</li>
 			<!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
 			<li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
