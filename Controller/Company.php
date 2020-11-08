@@ -16,14 +16,26 @@ class Company
 		} else {
 			return false;
 		}
-		
+
 		$companySql = "SELECT * FROM company WHERE id=" . $companyId;
 		$companyResult = $conn->query($companySql);
-		
+
+
+
 		if ($companyResult->num_rows > 0) {
 			return $companyResult->fetch_assoc();
-		} {
-			return false;
+		}
+
+		if ($companyResult->num_rows === 0) {
+			$companySql = "SELECT * FROM company";
+
+			$companyResult = $conn->query($companySql);
+
+			if ($companyResult->num_rows > 0) {
+				return $companyResult->fetch_assoc();
+			} else {
+				return false;
+			}
 		}
 	}
 }
