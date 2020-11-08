@@ -156,46 +156,42 @@
 		if(!$loggedin){ header('Location: /'); }
 	}
 	require './Controller/Page.php';
+	require './Controller/Company.php';
 
 	$cmsPage = new Page();
 	$cmsError = 'Something went wrong';
 	$GLOBALS['how_it_works'] = $cmsPage->get('how-it-works') ?? $cmsError;
 	$GLOBALS['faq'] = $cmsPage->get('faq') ?? $cmsError;
 	$GLOBALS['scams'] = $cmsPage->get('scams') ?? $cmsError;
-	
 
-	$info_url = 'api/api/get-info';
-	
-	$body = $api->requestApi($info_url, array('id'=>1));
-	
-	$json = json_decode($body);
-	
-	if($json->success) {
-		// $GLOBALS['faq'] = $json->faq;
 
-		$GLOBALS['rapr'] = $json->apr;
-		$GLOBALS['max_lt'] = $json->max_lt;
-		$GLOBALS['min_lt'] = $json->min_lt;
-		$GLOBALS['min_la'] = $json->min_la;
-		$GLOBALS['max_la'] = $json->max_la;
-		$GLOBALS['interestrates'] = $json->interestrates;
-		$GLOBALS['increments'] = $json->increments;
-		$GLOBALS['legal'] = $json->legal;
-		$GLOBALS['terms'] = $json->terms;
-		$GLOBALS['privacy'] = $json->privacy;
-		$GLOBALS['rep_example'] = $json->rep_example;
-		$GLOBALS['Warning'] = $json->Warning;
-		$GLOBALS['company_name'] = $json->company_name;
-		$GLOBALS['company_address'] = $json->company_address;
-		$GLOBALS['company_number'] = $json->company_number;
-		$GLOBALS['fca_number'] = $json->fca_number;
-		$GLOBALS['ico_number'] = $json->ico_number;
-		$GLOBALS['homepage_legal_block'] = $json->homepage_legal_block;
-		$GLOBALS['home_step_one'] = $json->home_step_one;
-		$GLOBALS['home_step_two'] = $json->home_step_two;
-		$GLOBALS['home_step_three'] = $json->home_step_three;
-		$GLOBALS['home_ctas'] = $json->home_ctas;
-		$GLOBALS['terms_url'] = $json->terms_url;
+	$cmsCompany = new Company();
+	$cmsCompany = $cmsCompany->get();
+	
+	if($cmsCompany) {
+		$GLOBALS['rapr'] = $cmsCompany['apr'];
+		$GLOBALS['max_lt'] = $cmsCompany['max_lt'];
+		$GLOBALS['min_lt'] = $cmsCompany['min_lt'];
+		$GLOBALS['min_la'] = $cmsCompany['min_la'];
+		$GLOBALS['max_la'] = $cmsCompany['max_la'];
+		$GLOBALS['interestrates'] = $cmsCompany['interestrates'];
+		$GLOBALS['increments'] = $cmsCompany['increments'];
+		$GLOBALS['legal'] = $cmsCompany['legal'];
+		$GLOBALS['terms'] = $cmsCompany['terms'];
+		$GLOBALS['privacy'] = $cmsCompany['privacy'];
+		$GLOBALS['rep_example'] = $cmsCompany['rep_example'];
+		$GLOBALS['Warning'] = $cmsCompany['warning'];
+		$GLOBALS['company_name'] = $cmsCompany['company_name'];
+		$GLOBALS['company_address'] = $cmsCompany['company_address'];
+		$GLOBALS['company_number'] = $cmsCompany['company_number'];
+		$GLOBALS['fca_number'] = $cmsCompany['fca_number'];
+		$GLOBALS['ico_number'] = $cmsCompany['ico_number'];
+		$GLOBALS['homepage_legal_block'] = $cmsCompany['homepage_legal_block'];
+		$GLOBALS['home_step_one'] = $cmsCompany['home_step_one'];
+		$GLOBALS['home_step_two'] = $cmsCompany['home_step_two'];
+		$GLOBALS['home_step_three'] = $cmsCompany['home_step_three'];
+		$GLOBALS['home_ctas'] = $cmsCompany['home_ctas'];
+		$GLOBALS['terms_url'] = $cmsCompany['terms_url'];
 	}
 
 ?>
