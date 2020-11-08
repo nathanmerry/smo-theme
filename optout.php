@@ -179,7 +179,7 @@ $result = $cmsSmoConn->query($sql);
 if ($result->num_rows > 0) {
 	// output data of each row
 	while ($row = $result->fetch_assoc()) {
-		$GLOBALS['h1c'] = $row["h1c"];
+		$GLOBALS['h1c'] = $row["h1c"] ?? null;
 		$GLOBALS['Button_Colour'] = $row["button_colour"];
 		$GLOBALS['Button_Colour_Border'] = $row["button_colour_border"];
 		$GLOBALS['Header_Colour'] = $row["header_colour"];
@@ -224,7 +224,7 @@ if ($cmsCompany) {
 	$GLOBALS['increments'] = $cmsCompany['increments'];
 	$GLOBALS['legal'] = $cmsCompany['legal'];
 	$GLOBALS['terms'] = $cmsCompany['terms'];
-	$GLOBALS['privacy'] = $cmsCompany['privacy'];
+	$GLOBALS['privacy'] = $cmsCompany['privacy'] ?? null;
 	$GLOBALS['rep_example'] = $cmsCompany['rep_example'];
 	$GLOBALS['Warning'] = $cmsCompany['Warning'];
 	$GLOBALS['company_name'] = $cmsCompany['company_name'];
