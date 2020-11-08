@@ -1,6 +1,6 @@
-    <!-- <div id="warning-line" class="legal-banner">    <p id="text">   <center> <strong>Warning:</strong> Late repayment can cause you serious money problems. For help and advice go to <a href="http://www.moneyadviceservice.org.uk" target="_blank" rel="nofollow" style="color:#fff;">moneyadviceservice.org.uk</a></center></p>
+    <div id="warning-line" class="legal-banner">    <p id="text">   <center> <strong>Warning:</strong> Late repayment can cause you serious money problems. For help and advice go to <a href="http://www.moneyadviceservice.org.uk" target="_blank" rel="nofollow" style="color:#fff;">moneyadviceservice.org.uk</a></center></p>
    <p style="color:#fff;">We are aware of a scam circulating. BabyLoans.co.uk do not charge any fees to customers. Please be aware of suspicious phone calls from anyone claiming to be from BabyLoans.co.uk.</p>
-    </div> -->
+    </div>
 
 <?php ?>
 

@@ -938,7 +938,7 @@ input, select { border-radius: 5px !important; }
 #warning-line p#text{
 	margin-top:-20px;
 }
-.legal-banner {width:100%; position:fixed;  margin-top:-57px; background-color:<?php echo $Brand_Colour ; ?>; border-top:1px solid #fff; z-index:9999; color:#fff; font-size:16px; padding:12px 10px 0 10px; text-align: center}
+.legal-banner {width:100%; position:fixed;  margin-top:-99px; background-color:<?php echo $Brand_Colour ; ?>; border-top:1px solid #fff; z-index:9999; color:#fff; font-size:16px; padding:12px 10px 0 10px; text-align: center}
 
 #late_repayment p {
 	font-family: 'Lato', sans-serif;
@@ -978,7 +978,7 @@ h2.lato_light {
 			
 			.contain-to-grid {
 	background: <?php echo $Header_Colour ; ?>;
-	margin-top:50px;
+	margin-top:99px;
 }
 		
 
