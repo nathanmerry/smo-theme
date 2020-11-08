@@ -206,7 +206,7 @@ table.history th {
 */
 .contain-to-grid-container {
 	padding-top:99px;
-	margin-bottom: 70px;
+	<!-- margin-bottom: 70px; -->
 }
 
 
