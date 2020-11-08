@@ -3,22 +3,17 @@
 class cmsSMO
 {
 	public $websiteID;
-	public $databaseSeverName;
-	public $databaseName;
-	public $databaseUsername;
-	public $databasePassword;
+	public $databaseSeverName = '127.0.0.1';
+	public $databaseName = 'baby1smo_main';
+	public $databaseUsername = 'baby1smo_admin';
+	public $databasePassword = '?K@2wyX44Ky)';
 	public $dbServerName = "127.0.0.1";
 
 
 	function __construct()
 	{
 		$this->websiteID = $this->getWebsiteID();
-		$this->databaseSeverName = '127.0.0.1';
-		$this->databaseName = 'baby1smo_main';
-		$this->databaseUsername = 'baby1smo_admin';
-		$this->databasePassword = '?K@2wyX44Ky)';
 	}
-
 	function getWebsiteID()
 	{
 		$websites = json_decode(file_get_contents(__DIR__ . '/websites.json'), true);
