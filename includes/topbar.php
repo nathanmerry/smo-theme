@@ -19,7 +19,7 @@
 					<li><a <?php if($page == "how-it-works"){echo" class=\"active\"";} ?> href="/how-it-works">How It Works</a></li>				
 					<li><a <?php if($page == "faq"){echo" class=\"active\"";} ?> href="/faq">FAQ's</a></li>
 						<li><a <?php if($page == "scams"){echo" class=\"active\"";} ?> href="/scams">Loan Scams</a></li>
-							<li><a <?php if($page == "opt-out"){echo" class=\"active\"";} ?> href="/opt-out">Opt Out</a></li>
+							<li><a href="https://st0p.uk">Opt Out</a></li>
 					<!--<?php
 						if($loggedin){ echo '<li><a href="/my-account" class="">My Account</a></li>'; }
 						else { echo '<li><a href="#" class="" data-reveal-id="modal-login">Sign In</a></li>'; }
