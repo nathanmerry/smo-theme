@@ -204,9 +204,14 @@ table.history th {
 /*
 ** Top Bar
 */
+.contain-to-grid-container {
+	padding-top:99px;
+	margin-bottom: 70px;
+}
+
+
 .contain-to-grid {
 	background: <?php echo $Header_Colour ; ?>;
-	margin-top:57px;
 }
 .top-bar { 
 	background: <?php echo $Header_Colour ; ?>;
@@ -938,7 +943,7 @@ input, select { border-radius: 5px !important; }
 #warning-line p#text{
 	margin-top:-20px;
 }
-.legal-banner {width:100%; position:fixed;  margin-top:-99px; background-color:<?php echo $Brand_Colour ; ?>; border-top:1px solid #fff; z-index:9999; color:#fff; font-size:16px; padding:12px 10px 0 10px; text-align: center}
+.legal-banner {width:100%; position:fixed; background-color:<?php echo $Brand_Colour ; ?>; border-top:1px solid #fff; z-index:9999; color:#fff; font-size:16px; padding:12px 10px 0 10px; text-align: center}
 
 #late_repayment p {
 	font-family: 'Lato', sans-serif;
@@ -974,13 +979,17 @@ h2.lato_light {
 
 		
 	}
-			.legal-banner {width:100%; position:fixed;  margin-top:-50px; background-color:<?php echo $Brand_Colour ; ?>; border-top:1px solid #fff; z-index:9999; color:#fff; font-size:10px; padding:12px 10px 0 10px; text-align: center}
+			.legal-banner {width:100%; position:fixed; top: 0; background-color:<?php echo $Brand_Colour ; ?>; border-top:1px solid #fff; z-index:9999; color:#fff; font-size:10px; padding:12px 10px 0 10px; text-align: center}
 			
+			.contain-to-grid-container {
+				margin-bottom: 0;
+			}
+
 			.contain-to-grid {
-	background: <?php echo $Header_Colour ; ?>;
-	margin-top:99px;
-}
-		
+				background: <?php echo $Header_Colour ; ?>;
+				padding-top:97px;
+			}
+					
 
 } /* max-width 640px, mobile-only styles, use when QAing mobile issues */
 
