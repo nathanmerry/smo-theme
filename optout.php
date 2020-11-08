@@ -170,6 +170,43 @@ if (
 }
 
 require './globals.php';
+$cmsSmo = new cmsSMO();
+$cmsSmoConn = $cmsSmo->sqlQuery();
+
+$sql = "SELECT * FROM website WHERE id=" . $cmsSmo->websiteID;
+$result = $cmsSmoConn->query($sql);
+
+if ($result->num_rows > 0) {
+	// output data of each row
+	while ($row = $result->fetch_assoc()) {
+		$GLOBALS['h1c'] = $row["h1c"];
+		$GLOBALS['Button_Colour'] = $row["button_colour"];
+		$GLOBALS['Button_Colour_Border'] = $row["button_colour_border"];
+		$GLOBALS['Header_Colour'] = $row["header_colour"];
+		$GLOBALS['Warning_Block'] = $row["warning_block"];
+		$GLOBALS['Website_Address'] = $row["website_address"];
+		$GLOBALS['Homepage_Block_Colour'] = $row["homepage_block_colour"];
+		$GLOBALS['Footer_Background_Colour'] = $row["footer_background_colour"];
+		$GLOBALS['Footer_Font_Colour'] = $row["footer_font_colour"];
+		$GLOBALS['Header_Font_Colour'] = $row["header_font_colour"];
+		$GLOBALS['Header_Font_Colour_Hover'] = $row["header_font_colour_hover"];
+		$GLOBALS['Homepage_Heading_Colour'] = $row["homepage_heading_colour"];
+		$GLOBALS['Homepage_Reasons_Colour'] = $row["homepage_reasons_colour"];
+		$GLOBALS['Homepage_Block_Border'] = $row["homepage_block_border"];
+		$GLOBALS['Home_CTA_One'] = $row["home_cta_one"];
+		$GLOBALS['Home_CTA_Two'] = $row["home_cta_two"];
+		$GLOBALS['Home_CTA_Three'] = $row["home_cta_three"];
+		$GLOBALS['Home_Image_One'] = $row["home_image_one"];
+		$GLOBALS['Home_Image_Two'] = $row["home_image_two"];
+		$GLOBALS['Home_Image_Three'] = $row["home_image_three"];
+		$GLOBALS['Website_Short_Address'] = $row["website_short_address"];
+?>
+<?php }
+} else {
+	echo "results";
+}
+
+
 require './Controller/Company.php';
 
 $cmsCompany = new Company();
