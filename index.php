@@ -198,41 +198,32 @@
 
 <?php
 $cmsSmo = new cmsSMO();
-$cmsSmoConn = $cmsSmo->sqlQuery();
+$cmsSmo = $cmsSmo->getWebsite();
 
-$sql = "SELECT * FROM website WHERE id=" . $cmsSmo->websiteID;
-$result = $cmsSmoConn->query($sql);
-
-if ($result->num_rows > 0) {
+if ($cmsSmo) {
     // output data of each row
-    while($row = $result->fetch_assoc()) { 
-			$GLOBALS['h1c'] = $row["h1c"]; 
-			$GLOBALS['Button_Colour'] = $row["button_colour"]; 
-     $GLOBALS['Button_Colour_Border'] = $row["button_colour_border"]; 
-     $GLOBALS['Header_Colour'] = $row["header_colour"]; 
-     $GLOBALS['Warning_Block'] = $row["warning_block"]; 
-     $GLOBALS['Website_Address'] = $row["website_address"]; 
-     $GLOBALS['Homepage_Block_Colour'] = $row["homepage_block_colour"]; 
-     $GLOBALS['Footer_Background_Colour'] = $row["footer_background_colour"]; 
-     $GLOBALS['Footer_Font_Colour'] = $row["footer_font_colour"]; 
-     $GLOBALS['Header_Font_Colour'] = $row["header_font_colour"]; 
-     $GLOBALS['Header_Font_Colour_Hover'] = $row["header_font_colour_hover"]; 
-     $GLOBALS['Homepage_Heading_Colour'] = $row["homepage_heading_colour"]; 
-     $GLOBALS['Homepage_Reasons_Colour'] = $row["homepage_reasons_colour"]; 
-     $GLOBALS['Homepage_Block_Border'] = $row["homepage_block_border"]; 
-     $GLOBALS['Home_CTA_One'] = $row["home_cta_one"]; 
-     $GLOBALS['Home_CTA_Two'] = $row["home_cta_two"]; 
-     $GLOBALS['Home_CTA_Three'] = $row["home_cta_three"]; 
-     $GLOBALS['Home_Image_One'] = $row["home_image_one"]; 
-     $GLOBALS['Home_Image_Two'] = $row["home_image_two"]; 
-		 $GLOBALS['Home_Image_Three'] = $row["home_image_three"];
-		 $GLOBALS['Website_Short_Address'] = $row["website_short_address"]; 
-        ?>
-   <?php }
-} else {
-    echo "results";
+			$GLOBALS['h1c'] = $cmsSmo["h1c"]; 
+			$GLOBALS['Button_Colour'] = $cmsSmo["button_colour"]; 
+     $GLOBALS['Button_Colour_Border'] = $cmsSmo["button_colour_border"]; 
+     $GLOBALS['Header_Colour'] = $cmsSmo["header_colour"]; 
+     $GLOBALS['Warning_Block'] = $cmsSmo["warning_block"]; 
+     $GLOBALS['Website_Address'] = $cmsSmo["website_address"]; 
+     $GLOBALS['Homepage_Block_Colour'] = $cmsSmo["homepage_block_colour"]; 
+     $GLOBALS['Footer_Background_Colour'] = $cmsSmo["footer_background_colour"]; 
+     $GLOBALS['Footer_Font_Colour'] = $cmsSmo["footer_font_colour"]; 
+     $GLOBALS['Header_Font_Colour'] = $cmsSmo["header_font_colour"]; 
+     $GLOBALS['Header_Font_Colour_Hover'] = $cmsSmo["header_font_colour_hover"]; 
+     $GLOBALS['Homepage_Heading_Colour'] = $cmsSmo["homepage_heading_colour"]; 
+     $GLOBALS['Homepage_Reasons_Colour'] = $cmsSmo["homepage_reasons_colour"]; 
+     $GLOBALS['Homepage_Block_Border'] = $cmsSmo["homepage_block_border"]; 
+     $GLOBALS['Home_CTA_One'] = $cmsSmo["home_cta_one"]; 
+     $GLOBALS['Home_CTA_Two'] = $cmsSmo["home_cta_two"]; 
+     $GLOBALS['Home_CTA_Three'] = $cmsSmo["home_cta_three"]; 
+     $GLOBALS['Home_Image_One'] = $cmsSmo["home_image_one"]; 
+     $GLOBALS['Home_Image_Two'] = $cmsSmo["home_image_two"]; 
+		 $GLOBALS['Home_Image_Three'] = $cmsSmo["home_image_three"];
+		 $GLOBALS['Website_Short_Address'] = $cmsSmo["website_short_address"]; 
 }
-
 ?>
 
 <!doctype html>
